@@ -2,6 +2,7 @@ import asyncio
 import bleak
 
 from kivy.app import App
+from kivy import platform
 
 # from kivy.core.window import Window
 from kivy.uix.label import Label
@@ -77,6 +78,23 @@ async def main(app):
 
 if __name__ == "__main__":
     Logger.setLevel(logging.DEBUG)
+
+    # if platform is android, request the required permissions
+    if platform == "android":
+        import android
+        from android.permissions import request_permissions, Permission
+
+        request_permissions(
+            [
+                Permission.BLUETOOTH,
+                Permission.BLUETOOTH_SCAN,
+                Permission.BLUETOOTH_CONNECT,
+                Permission.BLUETOOTH_ADMIN,
+                Permission.ACCESS_FINE_LOCATION,
+                Permission.ACCESS_COARSE_LOCATION,
+                Permission.ACCESS_BACKGROUND_LOCATION,
+            ]
+        )
 
     # app running on one thread with two async coroutines
     app = ExampleApp()
