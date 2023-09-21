@@ -43,7 +43,8 @@ requirements =
     kivy,
     bleak,
     async_to_sync,
-    async-timeout
+    async-timeout,
+    typing-extensions,
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -265,7 +266,7 @@ p4a.branch = develop
 
 # (str) The directory in which python-for-android should look for your own build recipes (if any)
 #p4a.local_recipes = recipes
-p4a.local_recipes = ../../bleak/backends/p4android/recipes
+p4a.local_recipes = ./recipes
 
 # (str) Filename to the hook for p4a
 #p4a.hook =
